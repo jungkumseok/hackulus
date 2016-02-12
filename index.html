@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Hackulus by jungkumseok</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Hackulus</h1>
+        <h2>Flask app to run a shell through browser</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/jungkumseok/hackulus/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/jungkumseok/hackulus/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/jungkumseok/hackulus" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a id="hackulus---flask-app-for-serving-shell-through-the-browser" class="anchor" href="#hackulus---flask-app-for-serving-shell-through-the-browser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>hackulus - Flask app for serving shell through the browser</h2>
+
+<h4>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h4>
+
+<p>Upon installation, hackulus will install the following Python modules: [ <em>flask</em> ]</p>
+
+<h4>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h4>
+
+<pre><code>user@localhost:~$ sudo pip3 install hackulus
+</code></pre>
+
+<h4>
+<a id="running-server" class="anchor" href="#running-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running server</h4>
+
+<p>"hackulus" command will start a service in debug mode at localhost:8000</p>
+
+<pre><code>user@localhost:~$ hackulus
+</code></pre>
+
+<p>To serve the application behind Apache via mod_wsgi, create a new virtualhost directive in the Apache config.</p>
+
+<p>Example: /etc/apache2/sites-available/hackulus.conf</p>
+
+<pre><code>&lt;VirtualHost *:8000&gt;
+    ServerName hackulus
+    ServerAdmin jungkumseok@gmail.com
+
+    WSGIDaemonProcess hackulus python-path=/usr/local/lib/python3.4/dist-packages/hackulus
+    WSGIScriptAlias / /usr/local/lib/python3.4/dist-packages/hackulus/hackulus.wsgi
+    WSGIProcessGroup hackulus
+    &lt;Directory /usr/local/lib/python3.4/dist-packages/hackulus&gt;
+        Require all granted
+    &lt;/Directory&gt;
+    ErrorLog ${APACHE_LOG_DIR}/hackulus-error.log
+        CustomLog ${APACHE_LOG_DIR}/hackulus-access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>If you haven't already, also run</p>
+
+<pre><code>user@localhost:~$ sudo a2ensite hackulus
+user@localhost:~$ sudo a2enmod wsgi
+</code></pre>
+
+<h4>
+<a id="enjoy-" class="anchor" href="#enjoy-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Enjoy :)</h4>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
