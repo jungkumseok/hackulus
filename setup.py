@@ -1,10 +1,10 @@
 from distutils.core import setup
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 setup(
   name = 'hackulus',
   install_requires = ['flask'],
   packages = ['hackulus',],
-  package_data = {'hackulus':['templates/*', 'scripts/*']},
+  package_data = {'hackulus':['templates/*', 'scripts/*', 'hackulus.wsgi']},
   scripts = ['hackulus/scripts/hackulus',],
   version = VERSION,
   description = 'Personal development server for developers',
